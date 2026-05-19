@@ -20,24 +20,22 @@ namespace Console.UTFSymbols
 {
     /* Imports from NET Framework */
     using System;
+    using System.Text;
 
     public class Program
     {
         public Program()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.InputEncoding = System.Text.Encoding.UTF8;
             Console.CursorVisible = false;
         }
 
         private static void Main(string[] args)
         {
-            CMenu unterMenu = new CMenu("Untermenü");
-            unterMenu.AddItem("Untermenüpunkt 1", () => UnterMenuPoint("A"), "🖥");
-            unterMenu.AddItem("Untermenüpunkt 2", () => UnterMenuPoint("B"), "🔊");
-
             CMenu mainMenu = new CMenu("Hauptmenü");
-            mainMenu.AddItem("Auswahl Menüpunkt 1", MenuPoint1);
-            mainMenu.AddSubMenu("Einstellungen", unterMenu, "⚙");
+            mainMenu.AddItem("UTF Symbole darstellen", MenuPoint1);
+            mainMenu.AddItem("UTF Symbol Viewer", MenuPoint2);
             mainMenu.AddItem("Beenden", () => ApplicationExit());
             mainMenu.Show();
         }
@@ -51,14 +49,140 @@ namespace Console.UTFSymbols
         {
             Console.Clear();
 
+            /*
+            Console.WriteLine($"{UTFSymbols.Rocket}\tAnwendung startet");
+            Console.WriteLine($"{UTFSymbols.Warning}\tAchtung");
+            Console.WriteLine($"{UTFSymbols.Lock}\tGesichert");
+            Console.WriteLine($"{UTFSymbols.Book}\tDokumentation");
+            Console.WriteLine($"{UTFSymbols.Fire}\tHot Reload aktiv");
+            Console.WriteLine($"{UTFSymbols.Chat}\tNeue Nachricht");
+            */
             Console.Wait();
         }
 
-        private static void UnterMenuPoint(string param)
+        private static void MenuPoint2()
         {
-            Console.Clear();
+            Console.Title = "UTF Symbol Viewer";
 
-            Console.Wait(param);
+            var symbols = UTFSymbols.GetAll;
+
+            while (true)
+            {
+                Console.Clear();
+
+                DrawHeader();
+
+                Console.Write("Suche (leer = alle, ESC = Ende): ");
+                string? search = ReadInputWithEscape(out bool escape);
+
+                if (escape)
+                {
+                    break;
+                }
+
+                Console.Clear();
+                DrawHeader();
+
+                var filtered = symbols
+                    .Where(x =>
+                        string.IsNullOrWhiteSpace(search) || x.Key.Contains(search, StringComparison.OrdinalIgnoreCase) || x.Key.Contains(search, StringComparison.OrdinalIgnoreCase))
+                    .ToDictionary();
+
+                PrintTable(filtered);
+
+                Console.WriteLine();
+                Console.WriteLine("ENTER = Neue Suche | ESC = Beenden");
+
+                var key = Console.ReadKey(true);
+
+                if (key.Key == ConsoleKey.Escape)
+                    break;
+            }
         }
+
+        private static void DrawHeader()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("══════════════════════════════════════════════════════");
+            Console.WriteLine("                UTF SYMBOL VIEWER");
+            Console.WriteLine("══════════════════════════════════════════════════════");
+            Console.ResetColor();
+            Console.WriteLine();
+        }
+
+        private static void PrintTable(Dictionary<string,(string,string)> symbols)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+            Console.WriteLine($"{Pad("Name", 20)}{Pad("Unicode", 15)}" + $"" +  $"{Pad("C# Code", 20)}" + $"Symbol");
+
+            Console.WriteLine(new string('-', 65));
+
+            Console.ResetColor();
+
+            foreach (var s in symbols)
+            {
+                Console.WriteLine(
+                    $"{Pad(s.Key, 20)}" +
+                    $"{Pad(s.Value.Item1.ToString(), 15)}" +
+                    $"{Pad(s.Value.Item2, 20)}" +
+                    $"{s.Value.Item2}");
+            }
+
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Gefundene Symbole: {symbols.Count}");
+            Console.ResetColor();
+        }
+        private static string Pad(string text, int length)
+        {
+            if (text.Length >= length)
+                return text.Substring(0, length - 1) + " ";
+
+            return text.PadRight(length);
+        }
+
+        private static string? ReadInputWithEscape(out bool escape)
+        {
+            escape = false;
+
+            var input = new StringBuilder();
+
+            while (true)
+            {
+                var key = Console.ReadKey(true);
+
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    escape = true;
+                    return null;
+                }
+
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    Console.WriteLine();
+                    return input.ToString();
+                }
+
+                if (key.Key == ConsoleKey.Backspace && input.Length > 0)
+                {
+                    input.Length--;
+
+                    Console.Write("\b \b");
+                    continue;
+                }
+
+                input.Append(key.KeyChar);
+                Console.Write(key.KeyChar);
+            }
+        }
+    }
+
+    public class UtfSymbol
+    {
+        public string Name { get; set; } = "";
+        public string Unicode { get; set; } = "";
+        public string CSharpCode { get; set; } = "";
+        public string Symbol { get; set; } = "";
     }
 }
