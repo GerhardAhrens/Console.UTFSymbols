@@ -49,14 +49,13 @@ namespace Console.UTFSymbols
         {
             Console.Clear();
 
-            /*
-            Console.WriteLine($"{UTFSymbols.Rocket}\tAnwendung startet");
-            Console.WriteLine($"{UTFSymbols.Warning}\tAchtung");
-            Console.WriteLine($"{UTFSymbols.Lock}\tGesichert");
-            Console.WriteLine($"{UTFSymbols.Book}\tDokumentation");
-            Console.WriteLine($"{UTFSymbols.Fire}\tHot Reload aktiv");
-            Console.WriteLine($"{UTFSymbols.Chat}\tNeue Nachricht");
-            */
+            Console.WriteLine($"{UTFSymbols.Check.Item3}\tPrüfen");
+            Console.WriteLine($"{UTFSymbols.Cross.Item3}\tKreuz");
+            Console.WriteLine($"{UTFSymbols.Warning.Item3}\tWarnung");
+            Console.WriteLine($"{UTFSymbols.Info.Item3}\tInformation");
+            Console.WriteLine($"{UTFSymbols.Error.Item3}\tFehler");
+            Console.WriteLine($"{UTFSymbols.Record.Item3}\tAufnehmen");
+
             Console.Wait();
         }
 
@@ -73,7 +72,7 @@ namespace Console.UTFSymbols
                 DrawHeader();
 
                 Console.Write("Suche (leer = alle, ESC = Ende): ");
-                string? search = ReadInputWithEscape(out bool escape);
+                string search = ReadInputWithEscape(out bool escape);
 
                 if (escape)
                 {
@@ -110,7 +109,7 @@ namespace Console.UTFSymbols
             Console.WriteLine();
         }
 
-        private static void PrintTable(Dictionary<string,(string,string)> symbols)
+        private static void PrintTable(Dictionary<string,(string,string,string)> symbols)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
 
@@ -124,9 +123,9 @@ namespace Console.UTFSymbols
             {
                 Console.WriteLine(
                     $"{Pad(s.Key, 20)}" +
-                    $"{Pad(s.Value.Item1.ToString(), 15)}" +
+                    $"{Pad(s.Value.Item1, 15)}" +
                     $"{Pad(s.Value.Item2, 20)}" +
-                    $"{s.Value.Item2}");
+                    $"{s.Value.Item3}");
             }
 
             Console.WriteLine();
@@ -137,12 +136,14 @@ namespace Console.UTFSymbols
         private static string Pad(string text, int length)
         {
             if (text.Length >= length)
+            {
                 return text.Substring(0, length - 1) + " ";
+            }
 
             return text.PadRight(length);
         }
 
-        private static string? ReadInputWithEscape(out bool escape)
+        private static string ReadInputWithEscape(out bool escape)
         {
             escape = false;
 

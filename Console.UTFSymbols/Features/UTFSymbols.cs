@@ -11,33 +11,33 @@
             Console.OutputEncoding = Encoding.UTF8;
         }
 
-        private static readonly Dictionary<string, (string,string)> _symbols = new()
+        private static readonly Dictionary<string, (string,string,string)> _symbols = new()
         {
         // Status
-        { nameof(Check), ("U+2714", "\u2714")  },
-        { nameof(Cross), ("","\u2716") },
-        { nameof(Warning), ("","\u26A0") },
-        { nameof(Info), ("","\u2139") },
-        { nameof(Error), ("","\u274C") },
-        { nameof(Success), ("","\u2705") },
+        { nameof(Check), ("U+2714", @"\u2714","\u2714") },
+        { nameof(Cross), ("U+2716",@"\u2716", "\u2716") },
+        { nameof(Warning), ("U+26A0",@"\u26A0","\u26A0") },
+        { nameof(Info), ("U+2139",@"\u2139","\u2139") },
+        { nameof(Error), ("U+274C",@"\u274C","\u274C") },
+        { nameof(Success), ("U+2705",@"\u2705","\u2705") },
 
         // Navigation
-        { nameof(ArrowRight), ("","\u2192") },
-        { nameof(ArrowLeft), ("","\u2190") },
-        { nameof(ArrowUp), ("","\u2191") },
-        { nameof(ArrowDown), ("","\u2193") },
-        { nameof(DoubleArrowRight), ("","\u21D2") },
-        { nameof(DoubleArrowLeft), ("","\u21D0") },
+        { nameof(ArrowRight), ("U+2192",@"\u2192","\u2192") },
+        { nameof(ArrowLeft), ("U+2190",@"\u2190","\u2190") },
+        { nameof(ArrowUp), ("U+2191",@"\u2191","\u2191") },
+        { nameof(ArrowDown), ("U+2193",@"\u2193","\u2193") },
+        { nameof(DoubleArrowRight), ("U+21D2",@"\u21D2","\u21D2") },
+        { nameof(DoubleArrowLeft), ("U+21D0",@"\u21D0","\u21D0") },
+
+        // Medien
+        { nameof(Play), ("U+25B6",@"\u25B6","\u25B6") },
+        { nameof(Pause), ("U+u23F8",@"\u23F8","\u23F8") },
+        { nameof(Stop), ("U+u25A0",@"\u25A0","\u25A0") },
+        { nameof(Record), ("U+23FA",@"\u23FA","\u23FA") },
+        { nameof(FastForward), ("U+23E9",@"\u23E9","\u23E9") },
+        { nameof(Rewind), ("U+23EA",@"\u23EA","\u23EA") },
 
         /*
-        // Medien
-        { nameof(Play), ("","\u25B6") },
-        { nameof(Pause), "\u23F8" },
-        { nameof(Stop), "\u25A0" },
-        { nameof(Record), "\u23FA" },
-        { nameof(FastForward), "\u23E9" },
-        { nameof(Rewind), "\u23EA" },
-
         // Dateien / Ordner
         { nameof(Folder), "\U0001F4C1" },
         { nameof(FolderOpen), "\U0001F4C2" },
@@ -109,38 +109,38 @@
         */
     };
 
-        public static (string,string) Get(string name)
+        public static (string,string,string) Get(string name)
         {
-            return _symbols.TryGetValue(name, out (string,string) symbol) ? symbol : ("?","?");
+            return _symbols.TryGetValue(name, out (string,string,string) symbol) ? symbol : ("?","?","?");
         }
 
-        public static IReadOnlyDictionary<string, (string,string)> GetAll => _symbols;
+        public static IReadOnlyDictionary<string, (string,string,string)> GetAll => _symbols;
 
         // Status
-        public static (string,string) Check => _symbols[nameof(Check)];
-        public static (string, string) Cross => _symbols[nameof(Cross)];
-        public static (string, string) Warning => _symbols[nameof(Warning)];
-        public static (string, string) Info => _symbols[nameof(Info)];
-        public static (string, string) Error => _symbols[nameof(Error)];
-        public static (string, string) Success => _symbols[nameof(Success)];
+        public static (string,string,string) Check => _symbols[nameof(Check)];
+        public static (string, string,string) Cross => _symbols[nameof(Cross)];
+        public static (string, string,string) Warning => _symbols[nameof(Warning)];
+        public static (string, string,string) Info => _symbols[nameof(Info)];
+        public static (string, string,string) Error => _symbols[nameof(Error)];
+        public static (string, string,string) Success => _symbols[nameof(Success)];
 
         // Navigation
-        public static (string, string) ArrowRight => _symbols[nameof(ArrowRight)];
-        public static (string, string) ArrowLeft => _symbols[nameof(ArrowLeft)];
-        public static (string, string) ArrowUp => _symbols[nameof(ArrowUp)];
-        public static (string, string) ArrowDown => _symbols[nameof(ArrowDown)];
-        public static (string, string) DoubleArrowRight => _symbols[nameof(DoubleArrowRight)];
-        public static (string, string) DoubleArrowLeft => _symbols[nameof(DoubleArrowLeft)];
+        public static (string, string,string) ArrowRight => _symbols[nameof(ArrowRight)];
+        public static (string, string,string) ArrowLeft => _symbols[nameof(ArrowLeft)];
+        public static (string, string,string) ArrowUp => _symbols[nameof(ArrowUp)];
+        public static (string, string,string) ArrowDown => _symbols[nameof(ArrowDown)];
+        public static (string, string,string) DoubleArrowRight => _symbols[nameof(DoubleArrowRight)];
+        public static (string, string,string) DoubleArrowLeft => _symbols[nameof(DoubleArrowLeft)];
+
+        // Medien
+        public static (string, string, string) Play => _symbols[nameof(Play)];
+        public static (string, string, string) Pause => _symbols[nameof(Pause)];
+        public static (string, string, string) Stop => _symbols[nameof(Stop)];
+        public static (string, string, string) Record => _symbols[nameof(Record)];
+        public static (string, string, string) FastForward => _symbols[nameof(FastForward)];
+        public static (string, string, string) Rewind => _symbols[nameof(Rewind)];
 
         /*
-        // Medien
-        public static string Play => _symbols[nameof(Play)];
-        public static string Pause => _symbols[nameof(Pause)];
-        public static string Stop => _symbols[nameof(Stop)];
-        public static string Record => _symbols[nameof(Record)];
-        public static string FastForward => _symbols[nameof(FastForward)];
-        public static string Rewind => _symbols[nameof(Rewind)];
-
         // Dateien
         public static string Folder => _symbols[nameof(Folder)];
         public static string FolderOpen => _symbols[nameof(FolderOpen)];
