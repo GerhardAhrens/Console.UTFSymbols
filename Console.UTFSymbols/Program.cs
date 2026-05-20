@@ -30,7 +30,7 @@ namespace Console.UTFSymbols
             Console.InputEncoding = System.Text.Encoding.UTF8;
             Console.CursorVisible = false;
         }
-
+        
         private static void Main(string[] args)
         {
             CMenu mainMenu = new CMenu("Hauptmenü");

@@ -72,30 +72,30 @@ namespace Console.UTFSymbols
         { nameof(Key), ("U+0001F511",@"\U0001F511","\U0001F511") },
         { nameof(Shield), ("U+0001F6E1",@"\U0001F6E1","\U0001F6E1") },
 
-        /*
         // Benutzer / Kommunikation
-        { nameof(User), "\U0001F464" },
-        { nameof(Users), "\U0001F465" },
-        { nameof(Mail), "\u2709" },
-        { nameof(Phone), "\u260E" },
-        { nameof(Chat), "\U0001F4AC" },
+        { nameof(User), ("U+0001F464",@"\U0001F464","\U0001F464") },
+        { nameof(Users), ("U+0001F465",@"\U0001F465","\U0001F465") },
+        { nameof(Mail), ("u+2709",@"\u2709","\u2709") },
+        { nameof(Phone), ("u+260E",@"\u260E","\u260E") },
+        { nameof(Chat), ("U+0001F4AC",@"\U0001F4AC","\U0001F4AC") },
 
         // Suche / Anzeige
-        { nameof(Search), "\U0001F50D" },
-        { nameof(Eye), "\U0001F441" },
-        { nameof(Hidden), "\U0001F648" },
+        { nameof(Search), ("U+0001F50D",@"\U0001F50D","\U0001F50D") },
+        { nameof(Eye), ("U+0001F441",@"\U0001F441","\U0001F441") },
+        { nameof(Hidden), ("U+0001F648",@"\U0001F648","\U0001F648") },
 
         // Sterne / Favoriten
-        { nameof(Star), "\u2605" },
-        { nameof(StarEmpty), "\u2606" },
-        { nameof(Heart), "\u2665" },
-        { nameof(BrokenHeart), "\U0001F494" },
+        { nameof(Star), ("u+2605",@"\u2605","\u2605") },
+        { nameof(StarEmpty), ("u+2606",@"\u2606","\u2606") },
+        { nameof(Heart), ("u+2665",@"\u2665","\u2665") },
+        { nameof(BrokenHeart), ("U+0001F494",@"\U0001F494","\U0001F494") },
 
         // Zeit
-        { nameof(Clock), "\U0001F553" },
-        { nameof(Hourglass), "\u231B" },
-        { nameof(Calendar), "\U0001F4C5" },
+        { nameof(Clock), ("U+0001F553",@"\U0001F553","\U0001F553") },
+        { nameof(Hourglass), ("u+231B",@"\u231B","\u231B") },
+        { nameof(Calendar), ("U+0001F4C5",@"\U0001F4C5","\U0001F4C5") },
 
+        /*
         // Entwicklung
         { nameof(Code), "\U0001F4BB" },
         { nameof(Bug), "\U0001F41B" },
