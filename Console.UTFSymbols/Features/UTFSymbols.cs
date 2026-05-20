@@ -1,4 +1,19 @@
-﻿namespace Console.UTFSymbols
+﻿//-----------------------------------------------------------------------
+// <copyright file="UTFSymbols.cs" company="Lifeprojects.de">
+//     Class: UTFSymbols
+//     Copyright © Lifeprojects.de GmbH 2026
+// </copyright>
+//
+// <author>Gerhard Ahrens - Lifeprojects.de</author>
+// <email>developer@lifeprojects.de</email>
+// <date>20.05.2026</date>
+//
+// <summary>
+// Die statische Klasse stellt verschiedene UTF Symbole zur Verfügung
+// </summary>
+//-----------------------------------------------------------------------
+
+namespace Console.UTFSymbols
 {
     using System;
     using System.Collections.Generic;
@@ -11,7 +26,7 @@
             Console.OutputEncoding = Encoding.UTF8;
         }
 
-        private static readonly Dictionary<string, (string,string,string)> _symbols = new()
+        private static readonly Dictionary<string, (string, string, string)> _symbols = new()
         {
         // Status
         { nameof(Check), ("U+2714", @"\u2714","\u2714") },
@@ -37,21 +52,21 @@
         { nameof(FastForward), ("U+23E9",@"\u23E9","\u23E9") },
         { nameof(Rewind), ("U+23EA",@"\u23EA","\u23EA") },
 
-        /*
         // Dateien / Ordner
-        { nameof(Folder), "\U0001F4C1" },
-        { nameof(FolderOpen), "\U0001F4C2" },
-        { nameof(File), "\U0001F4C4" },
-        { nameof(Trash), "\U0001F5D1" },
-        { nameof(Save), "\U0001F4BE" },
-        { nameof(Clipboard), "\U0001F4CB" },
+        { nameof(Folder), ("U+0001F4C1",@"\U0001F4C1","\U0001F4C1") },
+        { nameof(FolderOpen), ("U+0001F4C2",@"\U0001F4C2","\U0001F4C2") },
+        { nameof(File), ("U+0001F4C4",@"\U0001F4C4","\U0001F4C4") },
+        { nameof(Trash), ("U+0001F5D1",@"\U0001F5D1","\U0001F5D1") },
+        { nameof(Save), ("U+0001F4BE",@"\U0001F4BE","\U0001F4BE") },
+        { nameof(Clipboard), ("U+U0001F4CB",@"\U0001F4CB","\U0001F4CB") },
 
         // Werkzeuge
-        { nameof(Gear), "\u2699" },
-        { nameof(Hammer), "\U0001F528" },
-        { nameof(Wrench), "\U0001F527" },
-        { nameof(Toolbox), "\U0001F9F0" },
+        { nameof(Gear), ("U+2699",@"\u2699","\u2699") },
+        { nameof(Hammer), ("U+0001F528",@"\U0001F528","\U0001F528") },
+        { nameof(Wrench), ("U+0001F527",@"\U0001F527","\U0001F527") },
+        { nameof(Toolbox), ("U+0001F9F0",@"\U0001F9F0","\U0001F9F0") },
 
+        /*
         // Sicherheit
         { nameof(Lock), "\U0001F512" },
         { nameof(Unlock), "\U0001F513" },
@@ -109,28 +124,28 @@
         */
     };
 
-        public static (string,string,string) Get(string name)
+        public static (string, string, string) Get(string name)
         {
-            return _symbols.TryGetValue(name, out (string,string,string) symbol) ? symbol : ("?","?","?");
+            return _symbols.TryGetValue(name, out (string, string, string) symbol) ? symbol : ("?", "?", "?");
         }
 
-        public static IReadOnlyDictionary<string, (string,string,string)> GetAll => _symbols;
+        public static IReadOnlyDictionary<string, (string, string, string)> GetAll => _symbols;
 
         // Status
-        public static (string,string,string) Check => _symbols[nameof(Check)];
-        public static (string, string,string) Cross => _symbols[nameof(Cross)];
-        public static (string, string,string) Warning => _symbols[nameof(Warning)];
-        public static (string, string,string) Info => _symbols[nameof(Info)];
-        public static (string, string,string) Error => _symbols[nameof(Error)];
-        public static (string, string,string) Success => _symbols[nameof(Success)];
+        public static (string, string, string) Check => _symbols[nameof(Check)];
+        public static (string, string, string) Cross => _symbols[nameof(Cross)];
+        public static (string, string, string) Warning => _symbols[nameof(Warning)];
+        public static (string, string, string) Info => _symbols[nameof(Info)];
+        public static (string, string, string) Error => _symbols[nameof(Error)];
+        public static (string, string, string) Success => _symbols[nameof(Success)];
 
         // Navigation
-        public static (string, string,string) ArrowRight => _symbols[nameof(ArrowRight)];
-        public static (string, string,string) ArrowLeft => _symbols[nameof(ArrowLeft)];
-        public static (string, string,string) ArrowUp => _symbols[nameof(ArrowUp)];
-        public static (string, string,string) ArrowDown => _symbols[nameof(ArrowDown)];
-        public static (string, string,string) DoubleArrowRight => _symbols[nameof(DoubleArrowRight)];
-        public static (string, string,string) DoubleArrowLeft => _symbols[nameof(DoubleArrowLeft)];
+        public static (string, string, string) ArrowRight => _symbols[nameof(ArrowRight)];
+        public static (string, string, string) ArrowLeft => _symbols[nameof(ArrowLeft)];
+        public static (string, string, string) ArrowUp => _symbols[nameof(ArrowUp)];
+        public static (string, string, string) ArrowDown => _symbols[nameof(ArrowDown)];
+        public static (string, string, string) DoubleArrowRight => _symbols[nameof(DoubleArrowRight)];
+        public static (string, string, string) DoubleArrowLeft => _symbols[nameof(DoubleArrowLeft)];
 
         // Medien
         public static (string, string, string) Play => _symbols[nameof(Play)];
@@ -140,75 +155,73 @@
         public static (string, string, string) FastForward => _symbols[nameof(FastForward)];
         public static (string, string, string) Rewind => _symbols[nameof(Rewind)];
 
-        /*
         // Dateien
-        public static string Folder => _symbols[nameof(Folder)];
-        public static string FolderOpen => _symbols[nameof(FolderOpen)];
-        public static string File => _symbols[nameof(File)];
-        public static string Trash => _symbols[nameof(Trash)];
-        public static string Save => _symbols[nameof(Save)];
-        public static string Clipboard => _symbols[nameof(Clipboard)];
+        public static (string, string, string) Folder => _symbols[nameof(Folder)];
+        public static (string, string, string) FolderOpen => _symbols[nameof(FolderOpen)];
+        public static (string, string, string) File => _symbols[nameof(File)];
+        public static (string, string, string) Trash => _symbols[nameof(Trash)];
+        public static (string, string, string) Save => _symbols[nameof(Save)];
+        public static (string, string, string) Clipboard => _symbols[nameof(Clipboard)];
 
         // Werkzeuge
-        public static string Gear => _symbols[nameof(Gear)];
-        public static string Hammer => _symbols[nameof(Hammer)];
-        public static string Wrench => _symbols[nameof(Wrench)];
-        public static string Toolbox => _symbols[nameof(Toolbox)];
+        public static (string, string, string) Gear => _symbols[nameof(Gear)];
+        public static (string, string, string) Hammer => _symbols[nameof(Hammer)];
+        public static (string, string, string) Wrench => _symbols[nameof(Wrench)];
+        public static (string, string, string) Toolbox => _symbols[nameof(Toolbox)];
 
         // Sicherheit
-        public static string Lock => _symbols[nameof(Lock)];
-        public static string Unlock => _symbols[nameof(Unlock)];
-        public static string Key => _symbols[nameof(Key)];
-        public static string Shield => _symbols[nameof(Shield)];
+        public static (string, string, string) Lock => _symbols[nameof(Lock)];
+        public static (string, string, string) Unlock => _symbols[nameof(Unlock)];
+        public static (string, string, string) Key => _symbols[nameof(Key)];
+        public static (string, string, string) Shield => _symbols[nameof(Shield)];
 
         // Benutzer
-        public static string User => _symbols[nameof(User)];
-        public static string Users => _symbols[nameof(Users)];
-        public static string Mail => _symbols[nameof(Mail)];
-        public static string Phone => _symbols[nameof(Phone)];
-        public static string Chat => _symbols[nameof(Chat)];
+        public static (string, string, string) User => _symbols[nameof(User)];
+        public static (string, string, string) Users => _symbols[nameof(Users)];
+        public static (string, string, string) Mail => _symbols[nameof(Mail)];
+        public static (string, string, string) Phone => _symbols[nameof(Phone)];
+        public static (string, string, string) Chat => _symbols[nameof(Chat)];
 
         // Suche
-        public static string Search => _symbols[nameof(Search)];
-        public static string Eye => _symbols[nameof(Eye)];
-        public static string Hidden => _symbols[nameof(Hidden)];
+        public static (string, string, string) Search => _symbols[nameof(Search)];
+        public static (string, string, string) Eye => _symbols[nameof(Eye)];
+        public static (string, string, string) Hidden => _symbols[nameof(Hidden)];
 
         // Favoriten
-        public static string Star => _symbols[nameof(Star)];
-        public static string StarEmpty => _symbols[nameof(StarEmpty)];
-        public static string Heart => _symbols[nameof(Heart)];
-        public static string BrokenHeart => _symbols[nameof(BrokenHeart)];
+        public static (string, string, string) Star => _symbols[nameof(Star)];
+        public static (string, string, string) StarEmpty => _symbols[nameof(StarEmpty)];
+        public static (string, string, string) Heart => _symbols[nameof(Heart)];
+        public static (string, string, string) BrokenHeart => _symbols[nameof(BrokenHeart)];
 
         // Zeit
-        public static string Clock => _symbols[nameof(Clock)];
-        public static string Hourglass => _symbols[nameof(Hourglass)];
-        public static string Calendar => _symbols[nameof(Calendar)];
+        public static (string, string, string) Clock => _symbols[nameof(Clock)];
+        public static (string, string, string) Hourglass => _symbols[nameof(Hourglass)];
+        public static (string, string, string) Calendar => _symbols[nameof(Calendar)];
 
         // Entwicklung
-        public static string Code => _symbols[nameof(Code)];
-        public static string Bug => _symbols[nameof(Bug)];
-        public static string Rocket => _symbols[nameof(Rocket)];
-        public static string Fire => _symbols[nameof(Fire)];
+        public static (string, string, string) Code => _symbols[nameof(Code)];
+        public static (string, string, string) Bug => _symbols[nameof(Bug)];
+        public static (string, string, string) Rocket => _symbols[nameof(Rocket)];
+        public static (string, string, string) Fire => _symbols[nameof(Fire)];
 
         // Dokumente
-        public static string Book => _symbols[nameof(Book)];
-        public static string Books => _symbols[nameof(Books)];
-        public static string Pencil => _symbols[nameof(Pencil)];
-        public static string Scissors => _symbols[nameof(Scissors)];
+        public static (string, string, string) Book => _symbols[nameof(Book)];
+        public static (string, string, string) Books => _symbols[nameof(Books)];
+        public static (string, string, string) Pencil => _symbols[nameof(Pencil)];
+        public static (string, string, string) Scissors => _symbols[nameof(Scissors)];
 
         // Wetter
-        public static string Sun => _symbols[nameof(Sun)];
-        public static string Cloud => _symbols[nameof(Cloud)];
-        public static string Umbrella => _symbols[nameof(Umbrella)];
-        public static string Snowman => _symbols[nameof(Snowman)];
+        public static (string, string, string) Sun => _symbols[nameof(Sun)];
+        public static (string, string, string) Cloud => _symbols[nameof(Cloud)];
+        public static (string, string, string) Umbrella => _symbols[nameof(Umbrella)];
+        public static (string, string, string) Snowman => _symbols[nameof(Snowman)];
 
         // Sonstiges
-        public static string Home => _symbols[nameof(Home)];
-        public static string Music => _symbols[nameof(Music)];
-        public static string Smiley => _symbols[nameof(Smiley)];
-        public static string LightBulb => _symbols[nameof(LightBulb)];
-        public static string Flag => _symbols[nameof(Flag)];
-        public static string Pin => _symbols[nameof(Pin)];
-        */
+        public static (string, string, string) Home => _symbols[nameof(Home)];
+        public static (string, string, string) Music => _symbols[nameof(Music)];
+        public static (string, string, string) Smiley => _symbols[nameof(Smiley)];
+        public static (string, string, string) LightBulb => _symbols[nameof(LightBulb)];
+        public static (string, string, string) Flag => _symbols[nameof(Flag)];
+        public static (string, string, string) Pin => _symbols[nameof(Pin)];
     }
 }

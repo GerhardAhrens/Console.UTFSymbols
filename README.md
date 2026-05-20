@@ -8,6 +8,8 @@
 ## Projekt 
 In dem Projekt soll gezeigt werden, wie UTF Symbole als Darstellung in einer Konsolenanwendung verwendet werden kann.
 
+<img src="UTFViewer.png" style="width:650px;"/>
+
 ## Hinweis
 Der Source ist soll auch einfache Art und Weise die Funktionen eines Features zeigen. Der Source ist so geschrieben, das so wenig wie möglich zusätzliche NuGet-Pakete benötigt werden.
 
