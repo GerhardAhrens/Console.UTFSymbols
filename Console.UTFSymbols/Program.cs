@@ -49,6 +49,7 @@ namespace Console.UTFSymbols
         {
             Console.Clear();
 
+            Console.WriteLine($"{UTFSymbols.Get("check")}\tPrüfen");
             Console.WriteLine($"{UTFSymbols.Check.Item3}\tPrüfen");
             Console.WriteLine($"{UTFSymbols.Cross.Item3}\tKreuz");
             Console.WriteLine($"{UTFSymbols.Warning.Item3}\tWarnung");

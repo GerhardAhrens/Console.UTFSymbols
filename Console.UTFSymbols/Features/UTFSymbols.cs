@@ -66,13 +66,13 @@ namespace Console.UTFSymbols
         { nameof(Wrench), ("U+0001F527",@"\U0001F527","\U0001F527") },
         { nameof(Toolbox), ("U+0001F9F0",@"\U0001F9F0","\U0001F9F0") },
 
-        /*
         // Sicherheit
-        { nameof(Lock), "\U0001F512" },
-        { nameof(Unlock), "\U0001F513" },
-        { nameof(Key), "\U0001F511" },
-        { nameof(Shield), "\U0001F6E1" },
+        { nameof(Lock), ("U+0001F512",@"\U0001F512","\U0001F512") },
+        { nameof(Unlock), ("U+0001F513",@"\U0001F513","\U0001F513") },
+        { nameof(Key), ("U+0001F511",@"\U0001F511","\U0001F511") },
+        { nameof(Shield), ("U+0001F6E1",@"\U0001F6E1","\U0001F6E1") },
 
+        /*
         // Benutzer / Kommunikation
         { nameof(User), "\U0001F464" },
         { nameof(Users), "\U0001F465" },
@@ -124,13 +124,27 @@ namespace Console.UTFSymbols
         */
     };
 
-        public static (string, string, string) Get(string name)
+        public static string Get(string name)
         {
-            return _symbols.TryGetValue(name, out (string, string, string) symbol) ? symbol : ("?", "?", "?");
+            string result = string.Empty;
+            var enumerator = _symbols.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                // Zugriff auf den aktuellen KeyValuePair
+                KeyValuePair<string, (string, string, string)> current = enumerator.Current;
+                if (name.ToLower() == current.Key.ToLower())
+                {
+                    result = current.Value.Item3;
+                    break;
+                }
+            }
+
+            return result;
         }
 
         public static IReadOnlyDictionary<string, (string, string, string)> GetAll => _symbols;
 
+        #region Properties mit Symbolen zurückgeben
         // Status
         public static (string, string, string) Check => _symbols[nameof(Check)];
         public static (string, string, string) Cross => _symbols[nameof(Cross)];
@@ -223,5 +237,6 @@ namespace Console.UTFSymbols
         public static (string, string, string) LightBulb => _symbols[nameof(LightBulb)];
         public static (string, string, string) Flag => _symbols[nameof(Flag)];
         public static (string, string, string) Pin => _symbols[nameof(Pin)];
+        #endregion Properties mit Symbolen zurückgeben
     }
 }
