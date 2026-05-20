@@ -95,33 +95,31 @@ namespace Console.UTFSymbols
         { nameof(Hourglass), ("u+231B",@"\u231B","\u231B") },
         { nameof(Calendar), ("U+0001F4C5",@"\U0001F4C5","\U0001F4C5") },
 
-        /*
         // Entwicklung
-        { nameof(Code), "\U0001F4BB" },
-        { nameof(Bug), "\U0001F41B" },
-        { nameof(Rocket), "\U0001F680" },
-        { nameof(Fire), "\U0001F525" },
+        { nameof(Code), ("U+0001F4BB",@"\U0001F4BB","\U0001F4BB") },
+        { nameof(Bug), ("U+0001F41B",@"\U0001F41B","\U0001F41B") },
+        { nameof(Rocket), ("U+0001F680",@"\U0001F680","\U0001F680") },
+        { nameof(Fire), ("U+0001F525",@"\U0001F525","\U0001F525") },
 
         // Dokumente
-        { nameof(Book), "\U0001F4D6" },
-        { nameof(Books), "\U0001F4DA" },
-        { nameof(Pencil), "\u270E" },
-        { nameof(Scissors), "\u2702" },
+        { nameof(Book), ("U+0001F4D6",@"\U0001F4D6","\U0001F4D6") },
+        { nameof(Books), ("U+0001F4DA",@"\U0001F4DA","\U0001F4DA") },
+        { nameof(Pencil), ("u+270E",@"\u270E","\u270E") },
+        { nameof(Scissors), ("u+2702",@"\u2702","\u2702") },
 
         // Wetter
-        { nameof(Sun), "\u2600" },
-        { nameof(Cloud), "\u2601" },
-        { nameof(Umbrella), "\u2602" },
-        { nameof(Snowman), "\u2603" },
+        { nameof(Sun), ("u+2600",@"\u2600","\u2600") },
+        { nameof(Cloud), ("u+2601",@"\u2601","\u2601") },
+        { nameof(Umbrella), ("u+2602",@"\u2602","\u2602") },
+        { nameof(Snowman), ("u+2603",@"\u2603","\u2603") },
 
         // Sonstiges
-        { nameof(Home), "\u2302" },
-        { nameof(Music), "\u266B" },
-        { nameof(Smiley), "\u263A" },
-        { nameof(LightBulb), "\U0001F4A1" },
-        { nameof(Flag), "\U0001F6A9" },
-        { nameof(Pin), "\U0001F4CC" },
-        */
+        { nameof(Home), ("u+2302",@"\u2302","\u2302") },
+        { nameof(Music), ("u+266B",@"\u266B","\u266B") },
+        { nameof(Smiley), ("u+263A",@"\u263A","\u263A") },
+        { nameof(LightBulb), ("U+0001F4A1",@"\U0001F4A1","\U0001F4A1") },
+        { nameof(Flag), ("U+0001F6A9",@"\U0001F6A9","\U0001F6A9") },
+        { nameof(Pin), ("U+0001F4CC",@"\U0001F4CC","\U0001F4CC") },
     };
 
         public static string Get(string name)
