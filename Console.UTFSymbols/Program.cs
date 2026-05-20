@@ -10,7 +10,7 @@
 // <author>Gerhard Ahrens - Lifeprojects.de</author>
 // <email>developer@lifeprojects.de</email>
 // <date>19.05.2026 10:12:14</date>
-//
+// 
 // <summary>
 // Konsolen Applikation mit Menü
 // </summary>
